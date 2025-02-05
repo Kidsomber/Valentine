@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine... Forever?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Creepster', cursive;
+            background-color: black;
+            color: white;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: red;
+            text-shadow: 3px 3px 10px darkred;
+        }
+        .hearts {
+            font-size: 3em;
+            color: darkred;
+        }
+        .decorations {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .yes {
+            background-color: darkred;
+            color: white;
+        }
+        .no {
+            background-color: white;
+            color: darkred;
+            position: absolute;
+        }
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: red;
+            top: -10px;
+            opacity: 0.8;
+            border-radius: 50%;
+            animation: fall 3s linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .blood-drip {
+            position: absolute;
+            width: 100%;
+            height: 10px;
+            background: red;
+            top: 0;
+            box-shadow: 0 5px 10px darkred;
+        }
+    </style>
+    <script>
+        function moveNoButton() {
+            const noButton = document.getElementById('no');
+            noButton.style.top = Math.random() * window.innerHeight + 'px';
+            noButton.style.left = Math.random() * window.innerWidth + 'px';
+        }
+        
+        function showConfetti() {
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * window.innerWidth + 'px';
+                confetti.style.backgroundColor = ['red', 'darkred', 'black', 'white'][Math.floor(Math.random() * 4)];
+                confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+            alert('You are mine... FOREVER! 😈🩸');
+        }
+    </script>
+</head>
+<body>
+    <div class="blood-drip"></div>
+    <div class="container">
+        <h1>Will you be my Valentine... Forever? 🩸</h1>
+        <div class="hearts">🔪🩸</div>
+        <div class="decorations">🕷️🕸️🦇🖤</div>
+        <div class="buttons">
+            <button class="btn yes" onclick="showConfetti()">Yes</button>
+            <button class="btn no" id="no" onmouseover="moveNoButton()">No</button>
+        </div>
+    </div>
+</body>
+</html>
